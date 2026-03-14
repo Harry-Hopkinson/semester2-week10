@@ -42,7 +42,7 @@ We have also provided the text of Leo Tolstoy's famously lengthy novel
 This program invokes `sin()` from the C math library a very large number of
 times, summing the values that are returned.
 
-1. Examine the source code of `sin_sum.c`.
+1. Examine the source code of `sines.c`.
 
 2. Compile the program with `make sines`, then time its execution with
 
@@ -53,7 +53,7 @@ times, summing the values that are returned.
 ## `multiply.c`, `matrix.c`, `matrix.h`
 
 The files `matrix.h` and `matrix.c` define a data structure and functions for
-working with 2D matrices. The file `multiply.c` contains a program that creates
+working with matrices. The file `multiply.c` contains a program that creates
 two large (1000 rows x 1000 columns) matrices, fills them with random values,
 then multiplies them together.
 
