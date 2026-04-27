@@ -6,28 +6,33 @@ import seaborn as sb
 
 
 def plot(data):
-    data.plot(x="size", ylabel="Time (sec)", loglog=False)
+    data.plot(x="Size", ylabel="Time", loglog=False)
 
 
 def log_plot(data):
-    data.plot(x="size", ylabel="Time (sec)", loglog=True)
+    data.plot(x="Size", ylabel="Time", loglog=True)
 
 
 def log_fit(data, column):
-    x = np.log10(data["size"])
+    x = np.log10(data["Size"])
     y = np.log10(data[column])
     slope, _ = np.polyfit(x, y, deg=1)
     print(f"Log-log best fit for {column}: slope={slope:.3f}")
 
 
 def linear_regression(data, column):
-    sb.regplot(data, x="size", y=column, order=1)
+    sb.regplot(data, x="Size", y=column, order=1)
 
 
 def quadratic_regression(data, column):
-    sb.regplot(data, x="size", y=column, order=2)
+    sb.regplot(data, x="Size", y=column, order=2)
 
 
 if __name__ == "__main__":
     data = pd.read_csv("bubblesort.csv")
-    # call functions here
+
+    plot(data)
+    log_plot(data)
+    log_fit(data, "Time")
+    linear_regression(data, "Time")
+    quadratic_regression(data, "Time")

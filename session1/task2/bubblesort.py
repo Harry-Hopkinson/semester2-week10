@@ -40,7 +40,7 @@ if __name__ == "__main__":
     for i in range(num_trials):
         data = generate_random_numbers(size)
         start_time = process_time()
-        
+
         bubble_sort(data)
         total_time += process_time() - start_time
         print(f"Trial {i + 1} done")

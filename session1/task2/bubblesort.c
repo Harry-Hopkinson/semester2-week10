@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
     free(data);
 
     float average_time = total_time / num_trials;
-    printf("%d numbers sorted in %.5f seconds\n", size, average_time);
+    printf("%d numbers sorted with an average of %.5f seconds\n", size, average_time);
 
     return 0;
 }
