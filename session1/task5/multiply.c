@@ -1,7 +1,7 @@
 /* Program to multiply two large matrices */
 
 #include <assert.h>
-#include <stdlib.h>
+
 #include "matrix.h"
 
 int main(void)

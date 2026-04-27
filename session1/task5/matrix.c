@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <time.h>
+
 #include "matrix.h"
 
 
@@ -19,23 +20,26 @@ Matrix* matrix_create(int rows, int cols)
 
     Matrix* mat;
 
-    if ((mat = malloc(sizeof(Matrix))) == NULL) {
+    if ((mat = malloc(sizeof(Matrix))) == NULL)
         return NULL;
-    }
 
-    if ((mat->data = calloc(rows, sizeof(float*))) == NULL) {
+    if ((mat->data = calloc(rows, sizeof(float*))) == NULL)
+    {
         free(mat);
         return NULL;
     }
 
-    for (int i = 0; i < rows; ++i) {
+    for (int i = 0; i < rows; ++i)
+    {
         mat->data[i] = calloc(cols, sizeof(float));
-        if (mat->data[i] == NULL) {
-            for (int j = 0; j < i; ++j) {
+        if (mat->data[i] == NULL)
+        {
+            for (int j = 0; j < i; ++j)
                 free(mat->data[j]);
-            }
+
             free(mat->data);
             free(mat);
+
             return NULL;
         }
     }
@@ -51,9 +55,8 @@ float multiply_row_by_column(const Matrix* a, int row, const Matrix* b, int col)
 {
     float sum = 0.0f;
 
-    for (int k = 0; k < a->cols; ++k) {
+    for (int k = 0; k < a->cols; ++k)
         sum += a->data[row][k] * b->data[k][col];
-    }
 
     return sum;
 }
@@ -73,10 +76,10 @@ Matrix* matrix_multiply(const Matrix* a, const Matrix* b)
 
     Matrix* result = matrix_create(a->rows, b->cols);
 
-    for (int i = 0; i < a->rows; ++i) {
-        for (int j = 0; j < b->cols; ++j) {
+    for (int i = 0; i < a->rows; ++i) 
+    {
+        for (int j = 0; j < b->cols; ++j)
             result->data[i][j] = multiply_row_by_column(a, i, b, j);
-        }
     }
 
     return result;
@@ -101,10 +104,10 @@ void matrix_fill(Matrix* mat)
 
     srand(time(NULL));
 
-    for (int i = 0; i < mat->rows; ++i) {
-        for (int j = 0; j < mat->cols; ++j) {
+    for (int i = 0; i < mat->rows; ++i)
+    {
+        for (int j = 0; j < mat->cols; ++j)
             mat->data[i][j] = get_pseudorandom_number(1.0);
-        }
     }
 }
 
@@ -118,9 +121,8 @@ void matrix_destroy(Matrix* mat)
 {
     assert(mat != NULL);
 
-    for (int i = 0; i < mat->rows; ++i) {
+    for (int i = 0; i < mat->rows; ++i)
         free(mat->data[i]);
-    }
 
     free(mat->data);
     free(mat);
