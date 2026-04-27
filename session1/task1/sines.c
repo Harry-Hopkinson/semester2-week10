@@ -7,9 +7,8 @@ int main(void)
 {
     double sum = 0.0;
 
-    for(int i = 0; i < 5000000; ++i) {
+    for(int i = 0; i < 50000000; ++i)
         sum += sin(i);
-    }
 
     printf("Sum = %g\n", sum);
  
