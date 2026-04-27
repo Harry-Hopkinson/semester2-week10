@@ -40,9 +40,10 @@ if __name__ == "__main__":
     for i in range(num_trials):
         data = generate_random_numbers(size)
         start_time = process_time()
+        
         bubble_sort(data)
         total_time += process_time() - start_time
         print(f"Trial {i + 1} done")
 
     average_time = total_time / num_trials
-    print(f"{size} numbers sorted in {average_time:.5f} seconds")
+    print(f"{size} numbers sorted with an average time of {average_time:.5f} seconds")
